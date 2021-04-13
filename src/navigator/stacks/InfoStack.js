@@ -10,4 +10,4 @@ export const InfoStack=()=>{
                 <Stack.Screen name="Info" component={InfoScreen} />
         </Stack.Navigator>
     )
-}
+}   

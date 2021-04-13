@@ -16,7 +16,6 @@ import {CategoriesStack} from '../MyBlog/src/navigator/stacks/CategoriesStack';
 import {PostStack} from '../MyBlog/src/navigator/stacks/PostStack';
 import {InfoStack} from '../MyBlog/src/navigator/stacks/InfoStack';
 
-
 const Tab = createBottomTabNavigator();
 
 export default function App(){
