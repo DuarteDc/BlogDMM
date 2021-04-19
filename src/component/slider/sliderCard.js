@@ -15,7 +15,7 @@ export default function ComponentSlider(){
     }, []);
 
     return(
-        <View style={{flex:3, paddingBottom:80}}>
+        <View style={{flex:.7, paddingBottom:20}}>
             {isLoading ? <ActivityIndicator/>:(
 
                 <FlatListSlider

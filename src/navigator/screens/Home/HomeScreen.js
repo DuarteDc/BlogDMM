@@ -11,10 +11,10 @@ export default class HomeScreen extends Component {
         };
     }
     componentDidMount(){ 
-        fetch('https://udylglsk.lucusvirtual.es/api/randomProductos')
+        fetch('https://udylglsk.lucusvirtual.es/api/categoriesProductos')
         .then((response)=> response.json())
         .then((json) =>{
-            this.setState({data: json.productos});
+            this.setState({data: json.categoryProductos});
         })  
         .catch((error)=>console.error(error))   
         .finally(()=>{
@@ -29,7 +29,7 @@ export default class HomeScreen extends Component {
             <View style={{flex:1}}>
                 <ComponentSlider style={styles.slider}></ComponentSlider>
 
-                <Text style={{marginLeft:20}}>Productos</Text>
+                
                 {isLoading ? <ActivityIndicator/>:(
 
                     <FlatList
@@ -37,15 +37,24 @@ export default class HomeScreen extends Component {
                         horizontal
                         keyExtractor={({id}, index)=>id}
                         renderItem={({item})=>(
-                        <Fragment>
-                            <View style={styles.box2}>
-                                <View style={styles.box21}><Image style={styles.img}source={{uri:item.image}}/>
-                                    <Text style={styles.text}>{item.nombre}</Text>
-                                    <Text style={styles.text}>${item.precio}</Text>
-                                    <Text style={styles.text}>{item.descripcion}</Text>
-                                </View>    
+                            <Fragment>
+                            <View style={styles.contenerdo}> 
+                                <Text style={styles.categoria}>{item.nombre}</Text>
+                                <View style={styles.box2}>
+                                    <Text>  
+                                        {item.productos.map((i, index)=>{
+                                        return(<View style={styles.card}key={index} style={styles.box21}>
+                                            <Image style={styles.img}source={{uri:i.image}}/>
+                                            <Text style={styles.text}>{i.nombre} </Text>
+                                            <Text style={styles.text}>${i.precio}</Text>
+                                            <Text style={styles.text}>{i.descripcion}</Text>
+                                            </View>
+                                            )
+                                        })}
+                                    </Text>
+                                </View>
                             </View>
-                        </Fragment>
+                            </Fragment>
                         )} 
                     />
                 )}
@@ -58,13 +67,14 @@ const styles = StyleSheet.create({
         flex: 1, fontWeight: '300', fontSize: 40,
       },
       box2: {
-        flex:.1,
+        flex:.8,
         flexDirection:'row',
-        margin: 20,
-        height:330,
+        margin: 5,
+        height:30,
         justifyContent:'center',
         backgroundColor:'#000',
         borderRadius:8,
+        overflow:'hidden'
     },
     box21: {
         flex: 1,
@@ -87,8 +97,13 @@ const styles = StyleSheet.create({
     text1:{
         marginBottom:0,
         marginLeft:25
+    },
+    categoria:{
+        height:25,
+        marginLeft:5,
+        fontSize:20,
+        fontFamily:'arial'
     }
-
 });
 
 
