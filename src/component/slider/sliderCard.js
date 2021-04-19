@@ -6,16 +6,16 @@ export default function ComponentSlider(){
     const [isLoading, setLoading]= useState(true);
     const [data, setData]=useState([]);
     useEffect(()=>{
-        fetch('http://udylglsk.lucusvirtual.es/api/sliderPosts')
+        fetch('https://udylglsk.lucusvirtual.es/api/sliderProductos')
         .then((response)=>response.json())
-        .then((json)=>setData(json.sliderPosts))
+        .then((json)=>setData(json.sliderProductos))
 
         .catch((error)=> console.error(error))
         .finally(()=>setLoading(false));
     }, []);
 
     return(
-        <View style={{flex:1, padding:0}}>
+        <View style={{flex:3, paddingBottom:80}}>
             {isLoading ? <ActivityIndicator/>:(
 
                 <FlatListSlider

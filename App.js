@@ -36,7 +36,7 @@ export default function App(){
               ),
             }}
           />
-          <Tab.Screen name="Post" component={PostStack}
+          <Tab.Screen name="Productos" component={PostStack}
               options={{
                 tabBarIcon: ({ color, size }) => (
                   <MaterialCommunityIcons name="newspaper" color={'#F32A64'} size={35} />

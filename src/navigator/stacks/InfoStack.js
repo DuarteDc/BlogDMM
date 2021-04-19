@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, StyleSheet} from '@react-navigation/stack';
 import InfoScreen from '../screens/Info/InfoScreen';
 
 const Stack=createStackNavigator();
